@@ -1,0 +1,49 @@
+
+:root {
+  /* One theme colour (blue) with its tints */
+  --primary: #2f6fed;
+  --primary-dark: #1f56c7;
+  --primary-50: #f3f7ff;
+  --primary-100: #e6efff;
+  --primary-200: #cfdffd;
+
+  --bg: #f7f9fd;
+  --surface: #ffffff;
+  --border: #e3e9f4;
+  --text: #1c2536;
+  --text-muted: #6b7690;
+
+  --radius: 12px;
+
+  font-family: 'Inter Variable', 'Inter', system-ui, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+}
+
+button,
+select,
+textarea,
+input {
+  font: inherit;
+  color: inherit;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}

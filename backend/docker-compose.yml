@@ -1,0 +1,36 @@
+services:
+  postgres:
+    image: postgres:18-alpine
+    container_name: student-management-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${DB_USER:-school}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-school}
+      POSTGRES_DB: ${DB_NAME:-student_management}
+    ports:
+      - "${DB_PORT:-5432}:5432"
+    volumes:
+      # Postgres 18 layout: one mount at /var/lib/postgresql (data lives in a versioned subfolder).
+      - pgdata18:/var/lib/postgresql
+
+  # Web UI for the database: http://localhost:8000
+  # Log in with PGADMIN_EMAIL / PGADMIN_PASSWORD from .env. The "Student Management"
+  # server is already listed — connect with the DB_PASSWORD.
+  pgadmin:
+    image: dpage/pgadmin4:9.8
+    container_name: student-management-pgadmin
+    restart: unless-stopped
+    depends_on:
+      - postgres
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL:-admin@example.com}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD:-change-me}
+    ports:
+      - "8000:80"
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+      - ./pgadmin/servers.json:/pgadmin4/servers.json:ro
+
+volumes:
+  pgdata18:
+  pgadmin-data:
