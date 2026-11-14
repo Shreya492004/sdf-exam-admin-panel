@@ -52,12 +52,6 @@ export default function Dashboard({
       grade: grade(exam, result.answers),
     })),
   )
-  const avgPercent = results.length
-    ? Math.round(results.reduce((t, r) => t + r.grade.percent, 0) / results.length)
-    : null
-  const passRate = results.length
-    ? Math.round((results.filter((r) => r.grade.passed).length / results.length) * 100)
-    : null
 
   // Live first, then upcoming by start time.
   const startOf = (exam: Exam) => examWindow(exam)?.start.getTime() ?? new Date(exam.date).getTime()
@@ -128,13 +122,6 @@ export default function Dashboard({
             value={questionBank.length}
             sub="Saved in question banks"
             onClick={() => onNavigate('questions')}
-          />
-          <StatCard
-            tone="green"
-            icon={<TrendIcon width={20} height={20} />}
-            label="Average Score"
-            value={avgPercent === null ? '—' : `${avgPercent}%`}
-            sub={passRate === null ? 'No results yet' : `${passRate}% pass rate · ${results.length} attempts`}
           />
         </section>
 
@@ -239,11 +226,7 @@ export default function Dashboard({
               </thead>
               <tbody>
                 {classes.map((cls) => (
-                  <tr
-                    key={cls.id}
-                    className="clickable-row"
-                    onClick={() => onOpenClass({ classId: cls.id, view: 'menu' })}
-                  >
+                  <tr key={cls.id}>
                     <td className="student-name">{cls.label}</td>
                     <td>{(studentsByClass[cls.id] ?? []).length}</td>
                     <td>{(subjectsByClass[cls.id] ?? []).length}</td>
@@ -258,7 +241,7 @@ export default function Dashboard({
 
         <p className="dash-foot">
           <CalendarIcon width={14} height={14} />
-          Click any exam, result or class to open it.
+          Click any exam or result to open it.
         </p>
       </div>
     </div>

@@ -16,6 +16,7 @@ import {
 } from '../components/Icons'
 import { formatCountdown, formatDate, formatTimeRange, initials } from '../utils/format'
 import { PASS_PERCENT, type Grade } from '../utils/score'
+import logoUrl from '../../logo (1).webp'
 import '../attend.css'
 
 type Props = {
@@ -453,6 +454,7 @@ export default function AttendExam({ code }: Props) {
           </section>
 
           <form className="ax-panel ax-signin" onSubmit={signIn} noValidate>
+            <img className="ax-signin__logo" src={logoUrl} alt="SDF Academy" />
             <div className="ax-signin__heading">
               <div className="ax-signin__icon">
                 <LockIcon width={22} height={22} />
@@ -902,9 +904,11 @@ function Shell({ children, right }: { children: ReactNode; right?: ReactNode }) 
       <header className="ax-topbar">
         <div className="ax-topbar__inner">
           <div className="ax-brand">
-            <span className="ax-brand__mark">SM</span>
+            <span className="ax-brand__mark">
+              <img src={logoUrl} alt="" />
+            </span>
             <span className="ax-brand__text">
-              <strong>Student Management Academy</strong>
+              <strong>SDF Academy</strong>
               <small>Online Examination</small>
             </span>
           </div>
@@ -912,7 +916,7 @@ function Shell({ children, right }: { children: ReactNode; right?: ReactNode }) 
         </div>
       </header>
       <main className="ax-main">{children}</main>
-      <footer className="ax-footer">2026 © Student Management Academy</footer>
+      <footer className="ax-footer">2026 © SDF Academy</footer>
     </div>
   )
 }

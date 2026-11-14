@@ -1,6 +1,6 @@
 import type { Exam } from '../data/exams'
 import { CheckIcon } from './Icons'
-import { PASS_PERCENT, type Grade } from '../utils/score'
+import { PASS_PERCENT, selectedOptionIndex, type Grade } from '../utils/score'
 
 const LETTERS = ['A', 'B', 'C', 'D']
 
@@ -39,7 +39,8 @@ export default function AnswerSheet({ exam, answers, questionIndex, onAnswer }: 
 
       <ol className="question-list">
         {visibleQuestions.map(({ question: q, index: i }) => {
-          const chosen = answers[q.id]
+          const chosen = selectedOptionIndex(answers[q.id])
+          const unanswered = chosen === undefined
           const isRight = chosen === q.answer
           return (
             <li key={q.id} className="question-card">
@@ -47,8 +48,10 @@ export default function AnswerSheet({ exam, answers, questionIndex, onAnswer }: 
                 <span className="question-card__num">Q{i + 1}</span>
                 <span className="question-card__text">{q.text}</span>
                 {reviewing ? (
-                  <span className={`result-pill${isRight ? ' is-pass' : ' is-fail'}`}>
-                    {isRight ? `+${q.marks}` : `0 / ${q.marks}`}
+                  <span
+                    className={`result-pill${unanswered ? ' is-unanswered' : isRight ? ' is-pass' : ' is-fail'}`}
+                  >
+                    {unanswered ? 'Not answered' : isRight ? `+${q.marks}` : `0 / ${q.marks}`}
                   </span>
                 ) : (
                   <span className="marks-tag">

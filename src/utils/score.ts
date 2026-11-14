@@ -17,9 +17,16 @@ export type Grade = {
 /** The test's own pass mark, or the default. */
 export const passMarkOf = (exam: Pick<Exam, 'passPercent'>) => exam.passPercent ?? PASS_PERCENT
 
+export const selectedOptionIndex = (value: unknown): number | undefined => {
+  if (typeof value !== 'number' && typeof value !== 'string') return undefined
+  if (typeof value === 'string' && value.trim() === '') return undefined
+  const index = Number(value)
+  return Number.isInteger(index) && index >= 0 ? index : undefined
+}
+
 /** Validates a student's answers against the answer key, using each question's own marks. */
 export function grade(exam: Exam, answers: Record<string, number>): Grade {
-  const right = exam.questions.filter((q) => answers[q.id] === q.answer)
+  const right = exam.questions.filter((q) => selectedOptionIndex(answers[q.id]) === q.answer)
   const score = right.reduce((t, q) => t + q.marks, 0)
   const max = totalMarks(exam)
   const percent = max ? Math.round((score / max) * 100) : 0

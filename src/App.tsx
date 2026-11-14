@@ -226,7 +226,7 @@ export default function App() {
           )}
         </main>
 
-        <footer className="app-footer">2026 © Student Management Academy</footer>
+        <footer className="app-footer">2026 © SDF Academy</footer>
       </div>
     </div>
   )

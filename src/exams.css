@@ -278,6 +278,11 @@
   color: #b42318;
 }
 
+.result-pill.is-unanswered {
+  background: #f1f5f9;
+  color: #475569;
+}
+
 /* ---------- Questions ---------- */
 .question-list {
   list-style: none;
@@ -356,11 +361,13 @@
 .option-row.is-correct {
   border-color: #8fd3a8;
   background: #effaf3;
+  color: #1c7a3f;
 }
 
 .option-row.is-wrong {
   border-color: #f2a9a3;
   background: #fff3f2;
+  color: #b42318;
 }
 
 .option-letter {

@@ -50,6 +50,7 @@
 .brand {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 12px;
   min-height: 80px;
   padding: 18px 16px 14px;
@@ -58,20 +59,27 @@
 }
 
 .brand-mark {
-  width: 36px;
+  width: 64px;
   height: 36px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #2b4aa4, #1b2f73);
-  color: #fff;
-  display: grid;
-  place-items: center;
-  font-weight: 800;
-  font-size: 11px;
+  flex-shrink: 0;
+}
+
+.brand-mark img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: left center;
+}
+
+.sidebar .brand-mark {
+  width: 100px;
+  height: 44px;
 }
 
 .brand-name {
   font-weight: 700;
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.2;
   color: #0d1e48;
   letter-spacing: -0.02em;

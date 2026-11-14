@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import logoUrl from '../../logo (1).webp'
 import { BookIcon, ClassIcon, DashboardIcon, ExamIcon, StudentsIcon } from './Icons'
 
 export type PageKey = 'dashboard' | 'classes' | 'create-exam' | 'questions' | 'students'
@@ -27,8 +28,9 @@ export default function Sidebar({ active, open, collapsed, onSelect, onClose }: 
       <div className={`sidebar-backdrop${open ? ' is-open' : ''}`} onClick={onClose} />
       <aside className={`sidebar${open ? ' is-open' : ''}${collapsed ? ' is-collapsed' : ''}`}>
         <div className="brand">
-          <div className="brand-mark"><span>SM</span></div>
-          <div className="brand-name">Student Management</div>
+          <div className="brand-mark">
+            <img src={logoUrl} alt="" />
+          </div>
         </div>
 
         <nav className="nav">

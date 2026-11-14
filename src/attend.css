@@ -58,17 +58,17 @@
 }
 
 .ax-brand__mark {
-  width: 38px;
+  width: 70px;
   height: 38px;
   flex-shrink: 0;
-  display: grid;
-  place-items: center;
-  border-radius: 10px;
-  background: linear-gradient(135deg, var(--ax-navy), var(--ax-blue-2));
-  color: #fff;
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: 0.04em;
+}
+
+.ax-brand__mark img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: left center;
 }
 
 .ax-brand__text {
@@ -464,6 +464,15 @@
   display: grid;
   gap: 14px;
   padding: 28px;
+}
+
+.ax-signin__logo {
+  display: block;
+  justify-self: center;
+  width: 128px;
+  height: 50px;
+  object-fit: contain;
+  transform: translateY(-20px);
 }
 
 .ax-signin__icon {
@@ -1361,10 +1370,8 @@
 }
 
 .ax-brand__mark {
-  width: 42px;
+  width: 70px;
   height: 42px;
-  border-radius: 13px;
-  box-shadow: 0 6px 16px rgba(27, 62, 120, 0.2);
 }
 
 .ax-main {

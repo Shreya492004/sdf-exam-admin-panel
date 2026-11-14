@@ -2,6 +2,7 @@ import { useState, type FormEvent } from 'react'
 import { api, errorMessage } from '../data/api'
 import { getRememberedUsername, setRememberedUsername } from '../data/auth'
 import { EyeIcon, EyeOffIcon, LockIcon } from '../components/Icons'
+import logoUrl from '../../logo (1).webp'
 
 type Props = {
   /** Called with the token from the server after a successful sign-in. */
@@ -42,10 +43,10 @@ export default function LoginPage({ onLogin, note }: Props) {
       <form className="login-card" onSubmit={submit}>
         <div className="login-card__brand">
           <div className="brand-mark">
-            <span>SM</span>
+            <img src={logoUrl} alt="" />
           </div>
           <div>
-            <h1>Student Management</h1>
+            <h1>SDF Academy</h1>
             <p>Admin Panel</p>
           </div>
         </div>
@@ -110,7 +111,7 @@ export default function LoginPage({ onLogin, note }: Props) {
         </button>
       </form>
 
-      <footer className="login-footer">2026 © Student Management Academy</footer>
+      <footer className="login-footer">2026 © SDF Academy</footer>
     </div>
   )
 }
